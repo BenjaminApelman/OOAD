@@ -1,0 +1,20 @@
+Failure Mitigation in Microservices: An Object-Oriented Approach to Global Load
+This project provides a reference implementation of object-oriented design patterns to mitigate metastable failures in a microservices architecture. It demonstrates strategies such as centralized supervision, logging, mediators, strategic retries, and load shedding.
+
+OVERVIEW
+Key Concepts and Patterns Implemented:
+
+Superclass Supervision (AbstractServiceSupervisor): Centralizes failure-handling logic, such as retries and circuit breakers, and provides a uniform interface for managing service requests.
+Method Call Logging (MethodCallLogger): Records all service interactions (requests, responses, attempts, exceptions) for improved observability and easier debugging of metastable states.
+Mediator (ServiceMediator): Decouples services by centralizing communication, allowing for load balancing, routing, and dynamic failure mitigation strategies.
+Strategic Retry (RetryPolicy): Implements controlled retries (e.g., exponential backoff) to recover from transient failures without causing overload-induced metastable states.
+Load Shedding (LoadManager): Prevents system overload by limiting concurrent requests, forming a basis for priority-based request acceptance.
+Services Included:
+OrderService: Simulates placing orders. Demonstrates normal operation and handling unknown requests.
+PaymentService: Simulates processing payments, showing how multiple services integrate with the mediator and supervisor.
+Main.java: Demonstrates a simple end-to-end flow, dispatching requests to OrderService and PaymentService via the ServiceMediator.
+AbstractServiceSupervisor: A superclass that manages requests to a single service, handling retries, logging, and load checks.
+MethodCallLogger and ServiceCallRecord: Capture a full trace of service calls, aiding in diagnosing failures.
+ServiceMediator: Routes requests to the appropriate service, centralizing communication.
+RetryPolicy and ExponentialBackoffRetryPolicy: Provide flexible retry strategies.
+LoadManager: Controls request acceptance to prevent overload.
